@@ -1,10 +1,9 @@
 import { Router } from "express";
+import { bookme } from "../controllers/bookmeController.js";
 
 const bookmeRoute = Router();
 
-bookmeRoute.post('/bookme',(req ,res) =>{
-    res.send("book me here");
-})
+bookmeRoute.post('/bookme',bookme);
 
 bookmeRoute.post('/contact',(req ,res) =>{
     res.send("contact me here");
