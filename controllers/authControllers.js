@@ -14,7 +14,7 @@ export const signUP = async (req,res,next) =>{
    const {name , email , password} = req.body;
    const existinguser = await user.findOne({email})
 
-   if(existinguser.length>0){
+   if(existinguser){
       const error = new Error('email alredy used');
       error.statusCode = 409;
       throw error;
