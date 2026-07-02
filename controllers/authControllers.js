@@ -55,9 +55,10 @@ export const signIN = async (req,res,next) =>{
       if(!excistinguser){
          console.error("user not found");
          res.json({
-            sucess: false,
+            success: false,
             message: "user is not found"
          })
+         const error = new Error("User not found");
          error.statusCode = 401;
          throw error;
       }
@@ -73,28 +74,38 @@ export const signIN = async (req,res,next) =>{
       res.json({
          success: true,
          message: "logged in successfully",
-         data: {
-            token
-         }
+         token 
+         
       })
    } catch (error) {
       console.error(error);
       res.json({
-         sucess: false,
+         success: false,
          message: "loggin has failed"
       })
    }
 
 }
-export const logOUT = async (req,res,next)=>{
+export const logOUT = async (req, res, next) => {
    try {
-      
+      const authHeader = req.headers.authorization || req.headers.token;
+      const token = authHeader?.startsWith("Bearer ")
+         ? authHeader.split(" ")[1]
+         : authHeader;
+
+      res.status(200).json({
+         success: true,
+         message: "logged out successfully",
+         data: {
+            tokenReceived: Boolean(token),
+            note: "Token cleanup can be added here later for server-side revocation."
+         }
+      });
    } catch (error) {
       console.error(error);
-      res.json({
-         sucess: false,
-         message: "log OUT failed"
-      })
+      res.status(500).json({
+         success: false,
+         message: "log out failed"
+      });
    }
-
-}
+};

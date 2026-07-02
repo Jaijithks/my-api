@@ -6,9 +6,9 @@ import { permission } from "../middleware/authenticationMiddleware.js";
 const bookmeRoute = Router();
 
 bookmeRoute.post('/bookme',bookme);
-bookmeRoute.get('/viewbookme',viewBookme);
+bookmeRoute.get('/viewbookme',permission,viewBookme);
 
-bookmeRoute.post('/contact',updateContact);
-bookmeRoute.get('/viewcontact',viewContact);
+bookmeRoute.post('/contact',permission,updateContact);
+bookmeRoute.get('/viewcontact',permission,viewContact);
 
 export default bookmeRoute;
