@@ -66,3 +66,55 @@ try {
     })
 }
 }
+export const viewContact = async (req, res) => {
+    try {
+        const currentContact = await contact.findOne();
+
+        if (!currentContact) {
+            return res.status(404).json({
+                success: false,
+                message: "No contact found",
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Contact fetched",
+            currentContact,
+        });
+
+    } catch (error) {
+        console.error(error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Failed to fetch contact",
+        });
+    }
+};
+export const viewBookme = async (req, res) => {
+    try {
+        const allBookings = await booking.find();
+
+        if (!allBookings) {
+            return res.status(404).json({
+                success: false,
+                message: "No boookings found",
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Bookings fetched",
+            allBookings
+        });
+
+    } catch (error) {
+        console.error(error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Failed to fetch Bookings",
+        });
+    }
+};
