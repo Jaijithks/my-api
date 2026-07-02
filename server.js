@@ -6,9 +6,14 @@ import bookmeRoute from "./routes/bookmeRoute.js";
 import { PORT } from "./config/config.js";
 import connectDB from "./database/mongoDb.js";
 import dns from "dns"
+import cors from "cors";
 //constssss..
 const server = express();
 dns.setServers(["1.1.1.1","8.8.8.8"])
+server.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}));
 //database
 connectDB();
 //middleware

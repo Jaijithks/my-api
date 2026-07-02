@@ -66,16 +66,15 @@ export const viewProject = async (req,res,next ) =>{
     try {
         const allProject =  await project.find({});
         res.json({
-            sucess:true,
+            success:true,
             message:"sucessfully featched the projects",
-            data:{
-                "projects" : allProject
-            }
+            "projects" : allProject
+            
         })
     } catch (error) {
         console.error(error)
         res.json({
-            sucess:true,
+            success:true,
             message:"failed to load the projects"
         })
     }
