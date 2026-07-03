@@ -44,7 +44,8 @@ try {
             email,
             github,
             linkedin
-        }
+        },
+        { returnDocument: "after" }
     );
     res.json({
         sucess:true,
