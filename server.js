@@ -3,6 +3,7 @@ import express from "express";
 import authRoute from "./routes/authRoute.js";
 import projectRoute from "./routes/projectRoute.js";
 import bookmeRoute from "./routes/bookmeRoute.js";
+import profileRouter from "./routes/profileRoute.js";
 import { PORT } from "./config/config.js";
 import connectDB from "./database/mongoDb.js";
 import dns from "dns"
@@ -26,6 +27,7 @@ server.get('/',(req,res) =>{
 server.use('/api/auth',authRoute);
 server.use('/api/project',projectRoute);
 server.use('/api/book',bookmeRoute);
+server.use('/api/profile',profileRouter);
 //start the server
 server.listen(PORT, () =>{
     console.log(`server is running at :http://localhost:${PORT}`)
