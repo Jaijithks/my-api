@@ -16,12 +16,12 @@ import {
 const profileRouter = Router();
 
 profileRouter.post('/about', permission, createOrUpdateAbout);
-profileRouter.get('/about', permission, getAbout);
+profileRouter.get('/about',  getAbout);
 profileRouter.post('/skill', permission, createSkill);
-profileRouter.get('/skill', permission, getSkills);
+profileRouter.get('/skill', getSkills);
 profileRouter.delete('/skill/:title', permission, removeSkills);
 profileRouter.post('/profilepic', permission, upload.single('image'), uploadProfilePicture);
-profileRouter.get('/profilepic', permission, getProfilePicture);
+profileRouter.get('/profilepic', getProfilePicture);
 profileRouter.post('/resume', permission,upload.single('pdf'),uploadResume );
-profileRouter.get('/resume', permission, viewResume);
+profileRouter.get('/resume', viewResume);
 export default profileRouter;
