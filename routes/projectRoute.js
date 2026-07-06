@@ -6,7 +6,7 @@ import { permission } from "../middleware/authenticationMiddleware.js";
 const projectRoute = Router();
 
 projectRoute.post('/addproject',upload.single('image'),permission,addProject)
-projectRoute.get('/showProject',permission,viewProject)
+projectRoute.get('/showProject',viewProject)
 projectRoute.delete('/removeProject/:name',permission,removeProject)
 
 export default projectRoute;

@@ -12,8 +12,14 @@ import cors from "cors";
 const server = express();
 dns.setServers(["1.1.1.1","8.8.8.8"])
 server.use(cors({
-    origin: "http://localhost:5173",
-    credentials: true
+     origin: [
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "https://my-api-admin-frontend.vercel.app",
+      "https://dynamicportfolio-psi.vercel.app",
+
+    ],
 }));
 //database
 connectDB();

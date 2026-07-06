@@ -9,6 +9,6 @@ bookmeRoute.post('/bookme',bookme);
 bookmeRoute.get('/viewbookme',permission,viewBookme);
 
 bookmeRoute.post('/contact',permission,updateContact);
-bookmeRoute.get('/viewcontact',permission,viewContact);
+bookmeRoute.get('/viewcontact',viewContact);
 
 export default bookmeRoute;
