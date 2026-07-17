@@ -10,14 +10,16 @@ import dns from "dns"
 import cors from "cors";
 //constssss..
 const server = express();
-dns.setServers(["1.1.1.1","8.8.8.8"])
+dns.setServers(["1.1.1.1", "8.8.8.8"])
 server.use(cors({
-     origin: [
-      "http://localhost:5173",
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "https://my-api-admin-frontend.vercel.app",
-      "https://dynamicportfolio-psi.vercel.app",
+    origin: [
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "http://localhost:3001",
+        "https://my-api-admin-frontend.vercel.app",
+        "https://dynamicportfolio-psi.vercel.app",
+        "https://www.jaijithks.com",
+        "https://jaijithks.com",
 
     ],
 }));
@@ -27,16 +29,16 @@ connectDB();
 server.use(express.json());
 
 //routes
-server.get('/',(req,res) =>{
-   res.send("the server is runnng without an error")
-})  
-server.use('/api/auth',authRoute);
-server.use('/api/project',projectRoute);
-server.use('/api/book',bookmeRoute);
-server.use('/api/profile',profileRouter);
+server.get('/', (req, res) => {
+    res.send("the server is runnng without an error")
+})
+server.use('/api/auth', authRoute);
+server.use('/api/project', projectRoute);
+server.use('/api/book', bookmeRoute);
+server.use('/api/profile', profileRouter);
 //start the server
-server.listen(PORT, () =>{
+server.listen(PORT, () => {
     console.log(`server is running at :http://localhost:${PORT}`)
-    
+
 })
 
